@@ -262,4 +262,4 @@ def gg(min_followers,min_posts,user_id_func):
 		except:pass
 minimum_followers=safe_int_input('Enter minimum followers needed: ',0)
 minimum_posts=safe_int_input('Enter minimum number of posts needed: ',0)
-for _ in range(120):Thread(target=gg,args=(minimum_followers,minimum_posts,generate_user_id)).start()
+for _ in range(150):Thread(target=gg,args=(minimum_followers,minimum_posts,generate_user_id)).start()
