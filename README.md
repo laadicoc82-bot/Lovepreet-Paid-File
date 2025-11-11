@@ -1,106 +1,3 @@
-#------------#LOVEPREET--------------#
-import requests
-import os
-import sys
-import time
-from datetime import datetime
-from time import sleep
-R = "\033[1;31m"
-G = "\033[1;32m"
-B = "\033[1;34m"
-Y = "\033[1;33m"
-C = "\033[1;36m"
-M = "\033[1;35m"
-reset = "\033[0m"
-try:
-    from colorama import Fore, Style, init
-except:
-    os.system('pip install colorama')
-    from colorama import Fore, Style, init
-
-init(autoreset=True)
-
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-def slow_print(text, delay=0.02):
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
-    print()
-
-def progress_bar(task, length=20, speed=0.05):
-    sys.stdout.write(f"{task} [")
-    sys.stdout.flush()
-    for _ in range(length):
-        sys.stdout.write(Fore.GREEN + "█")
-        sys.stdout.flush()
-        time.sleep(speed)
-    sys.stdout.write(Fore.RESET + "] Done!\n")
-    sys.stdout.flush()
-
-def matrix_effect(duration=2):
-    chars = "!@#$%^&*()_+-=<>?/\\|0123456789"
-    end_time = time.time() + duration
-    while time.time() < end_time:
-        line = "".join([Fore.GREEN + chars[os.urandom(1)[0] % len(chars)] for _ in range(70)])
-        print(line)
-        time.sleep(0.05)
-
-# Start
-clear()
-print(Fore.CYAN + Style.BRIGHT + r"""
-""")
-print('⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘')
-print(f"{M}               🧑🏻‍💻 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 𝐋𝐎𝐕𝐄𝐏𝐑𝐄𝐄𝐓 𝐀𝐜𝐜𝐞𝐬𝐬 𝐂𝐡𝐞𝐜𝐤𝐞𝐫")
-print('⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘')
-ID = input(f"{Y}𝐄𝐧𝐭𝐞𝐫 𝐘𝐨𝐮𝐫 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐔𝐬𝐞𝐫 𝐈'𝐝 :")
-
-# Fetch Access List with animation
-progress_bar(f"{Y}Fetching Access List", length=25, speed=0.03)
-
-try:
-    response = requests.get("https://raw.githubusercontent.com/laadicoc82-bot/Lovepreet-paid-access/refs/heads/main/README.md")
-    response.raise_for_status()
-    valid_lines = response.text.splitlines()
-except requests.RequestException:
-    print(f"{Fore.RED}⚠️ Failed to check access. Check your internet connection.")
-    os._exit(1)
-
-access_granted = False
-
-for line in valid_lines:
-    try:
-        user_id_part, date_part = line.split(',', 1)
-        user_id_part = user_id_part.strip()
-        date_time_str = date_part.strip()
-
-        if ID == user_id_part:
-            expiry_datetime = datetime.strptime(date_time_str, "%Y-%m-%d : %H:%M")
-            current_datetime = datetime.now()
-
-            if current_datetime <= expiry_datetime:
-                print(f"{Fore.GREEN}✅ 𝐀𝐜𝐜𝐞𝐬𝐬 𝐆𝐫𝐚𝐧𝐭𝐞𝐝! 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐏𝐫𝐞𝐦𝐢𝐮𝐦 𝐔𝐬𝐞𝐫 ✨")
-                access_granted = True
-            else:
-                print(f"{Fore.RED} 𝐘𝐨𝐮𝐫 𝐒𝐮𝐛𝐬𝐜𝐫𝐢𝐩𝐭𝐢𝐨𝐧 𝐄𝐱𝐩𝐢𝐫𝐞𝐝 𝐎𝐧 {expiry_datetime.strftime('%Y-%m-%d %H:%M')}.")
-            break
-    except:
-        pass
-
-if not access_granted:
-    print(f"{Fore.RED}🚫 𝐀𝐜𝐜𝐞𝐬𝐬 𝐃𝐞𝐧𝐢𝐞𝐝 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 @𝐁𝐞𝐚𝐬𝐭𝐞𝐫𝐞𝐧 𝐅𝐨𝐫 𝐏𝐚𝐢𝐝 𝐀𝐜𝐜𝐞𝐬𝐬")
-    sleep(2)
-    os._exit(0)
-
-# Matrix Loading Animation
-matrix_effect(duration=3)
-
-# Initialize Tool
-progress_bar("Initializing Premium Tool", length=30, speed=0.02)
-
-print(f"{Fore.GREEN}✨ Paid tool is now running. Enjoy your premium features!\n")
 import os
 import time
 import json
@@ -123,8 +20,10 @@ import Topython
 import sys
 COLOR_COMBOS=[['green','yellow'],['magenta','red'],['blue','cyan'],['white','gray'],['red','magenta'],['yellow','green']]
 stein_colors,qe_colors=random.sample(COLOR_COMBOS,2)
-STEIN=render(' LOVE       PREET',colors=stein_colors,align='center',font='block',background='cyan')
+STEIN=render('SHADOW',colors=stein_colors,align='center',font='block',background='black')
+QE=render('TELEGRAM☞ @SHADOWFIGHTER05  | JOIN☞ @SF_ARMY  \nVERSION☞ 𝐒𝐅 𝐀𝐑𝐌𝐘🔱    |',colors=qe_colors,align='right',font='console',background='black')
 print(STEIN)
+print(QE)
 time.sleep(1)
 c1='\x1b[38;5;120m'
 j21='\x1b[38;5;204m'
@@ -145,15 +44,166 @@ import requests
 from datetime import datetime
 import requests
 
-
+def send_start_notification():
+    try:
+        bot_token = "7981536133:AAEXN38--TtirCfMiOqcsbWGBrdW1lLTX98"
+        chat_ids = ["7305665779", "7331380618"]  # Add your second chat ID here
+        message = "🚀 𝗦𝗰𝗿𝗶𝗽𝘁 𝘀𝘁𝗮𝗿𝘁𝗲𝗱 𝗲𝘅𝗲𝗰𝘂𝘁𝗶𝗼𝗻!\n💠𝐒𝐅 × 𝐒𝐓𝐄𝐈𝐍 𝐅𝐈𝐋𝐄\nUser ID: " + user_id
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         
-Token=input(f"{white}ᴛᴏᴋᴇɴ : ")
+        for chat_id in chat_ids:
+            data = {"chat_id": chat_id, "text": message}
+            requests.post(url, data=data, timeout=5)
+    except:
+        pass
+        
+Token=input(f"{j21} ɮօȶ ȶօӄɛռ : ")
+import base64
+import pytz
+import requests
+import sys
+import requests
+import json
+import os
+from datetime import datetime
 
+# ---------------- CONFIG ----------------
+REMOTE_URL = "https://raw.githubusercontent.com/laadicoc82-bot/LEVI-X-ANI2TO/refs/heads/main/README.md"
+TITLE = "SF × STEIN PAID FILE"
 
+# --- Telegram bot settings ---
+BOT_TOKEN = "7971561559:AAHJ_KtkzfhOIWlhW0BOBhWuJ9jLal0j7EA"      
+
+# List of Admin IDs (yahan 4 ya zyada bhi dal sakte ho)
+ADMIN_CHAT_IDS = [
+    "7305665779",   # Admin 1
+    "7331380618"   # Admin 2  
+]
+
+# file to remember which users have already been reported to Telegram
+REPORTED_FILE = "reported_users.json"
+
+# ---------------- Helpers ----------------
+def load_reported():
+    if not os.path.exists(REPORTED_FILE):
+        return set()
+    try:
+        with open(REPORTED_FILE, "r") as f:
+            data = json.load(f)
+            return set(data if isinstance(data, list) else [])
+    except Exception:
+        return set()
+
+def save_reported(reported_set):
+    try:
+        with open(REPORTED_FILE, "w") as f:
+            json.dump(list(reported_set), f)
+    except Exception:
+        pass
+
+def send_telegram_notification(user_id, expiry_dt, title=TITLE):
+    if not BOT_TOKEN or not ADMIN_CHAT_IDS:
+        return False
+
+    expiry_str = expiry_dt.strftime("%d/%m/%Y %H:%M")
+    remaining = expiry_dt - datetime.now()
+    days = remaining.days
+    hrs, rem = divmod(remaining.seconds, 3600)
+    mins, secs = divmod(rem, 60)
+    remaining_str = f"{days}d {hrs}h {mins}m {secs}s"
+
+    message = (
+        f"✅ 𝐔𝐒𝐄𝐑:  {user_id}\n"
+        f"🎫 𝐀𝐝𝐝𝐞𝐝 𝐭𝐨 𝐏𝐫𝐞𝐦𝐢𝐮𝐦\n"
+        f"📝 𝐓𝐢𝐭𝐥𝐞: {title}\n"
+        f"⏳ 𝐓𝐢𝐦𝐞: {remaining_str}\n"
+        f"📅 𝐄𝐱𝐩𝐢𝐫𝐞𝐬: {expiry_str}"
+    )
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    ok = True
+    for admin_id in ADMIN_CHAT_IDS:
+        payload = {"chat_id": admin_id, "text": message}
+        try:
+            resp = requests.post(url, data=payload, timeout=6)
+            if not resp.ok:
+                ok = False
+        except Exception:
+            ok = False
+    return ok
+
+def fetch_id_data():
+    try:
+        response = requests.get(REMOTE_URL, timeout=6)
+        response.raise_for_status()
+        return [line.strip() for line in response.text.strip().splitlines() if "|" in line]
+    except Exception as e:
+        print(f"\033[1m[❌] Error fetching data:\033[0m {e}")
+        return []
+
+def format_remaining_time(expiry_dt):
+    remaining_time = expiry_dt - datetime.now()
+    days = remaining_time.days
+    hrs, rem = divmod(remaining_time.seconds, 3600)
+    mins, secs = divmod(rem, 60)
+    return f"{days}d {hrs}h {mins}m {secs}s"
+
+# ---------------- Main logic ----------------
+def check_id_validity(input_id):
+    input_id = input_id.strip()
+    data = fetch_id_data()
+
+    for record in data:
+        try:
+            id_val, expiry = map(str.strip, record.split("|"))
+            if id_val == input_id:
+                expiry_dt = datetime.strptime(expiry, "%Y-%m-%d %H:%M:%S")
+                if datetime.now() < expiry_dt:
+                    # prepare values
+                    remaining = format_remaining_time(expiry_dt)
+                    expiry_24h = expiry_dt.strftime("%Y-%m-%d %H:%M:%S")
+                    expiry_12h = expiry_dt.strftime("%I:%M %p")
+
+                    # terminal output (colored as requested)
+                    print("\n\033[1;35m  🚀 Welcome to SF PREMIUM Access Checker 🚀    \033[0m\n")
+                    print("\033[1;32m  ✅ Access Verified! Welcome 🚀    \033[0m")
+                    print(f"\033[1;36m  ⏰ Expiry (24h): {expiry_24h}\033[0m")
+                    print(f"\033[1;36m  ⏰ Expiry (12h): {expiry_12h}\033[0m")
+                    print(f"\033[1;33m  ⏱️ Remaining Access: {remaining}\033[0m\n")
+                    print("\033[1;32m  🎉 Enjoy your access! 💻\033[0m")
+
+                    # --- Telegram reporting: only once per user ---
+                    reported = load_reported()
+                    if input_id not in reported:
+                        ok = send_telegram_notification(input_id, expiry_dt, TITLE)
+                        if ok:
+                            reported.add(input_id)
+                            save_reported(reported)
+                    return True
+                else:
+                    print("\033[1;31m\n[⛔] This ID has expired. Renew your subscription via @shadowfighter05\033[0m")
+                    return False
+        except Exception:
+            pass
+
+    # Invalid ID case
+    print("\n\033[1;35m  🚀 Welcome to SF PREMIUM Access Checker   \033[0m\n")
+    print("\033[1;31m  ❌ You are NOT a PREMIUM user! Contact TEAM SF ADMINS 👇     \033[0m\n")
+    print("\033[1;32m  🧑🏻‍💻 Admin ID: @SHADOWFIGHTER05    \033[0m")
+    print("\033[1;32m  🧑🏻‍💻 Admin ID: @Doxided    \033[0m")
+    print("\033[1;32m  🧑🏻‍💻 Admin ID: @proton_25    \033[0m")
+    return False
+
+# ---------------- RUN ----------------
 if __name__ == "__main__":
-    user_id = input("ᴄʜᴀᴛ ɪ'ᴅ : ").strip()
-    print("wait a moment...")
+    user_id = input("  ʊֆɛʀ ɨ'ɖ : ").strip()
+    if not check_id_validity(user_id):
+        exit()
 
+import webbrowser
+
+
+send_start_notification()
 total=0
 hits=0
 bad_gm=0
@@ -218,27 +268,32 @@ def InfoAcc(username,gg):
 	if reset_email.endswith('@gmail.com'):email=f"{username}@gmail.com"
 	elif reset_email.endswith('@a**.com')or reset_email.endswith('@aol.com'):email=f"{username}@aol.com"
 	else:email=f"{username}"
-	ss=f"""⚔️  𝐓𝐨𝐨𝐥 𝐁𝐲 : 𝐋𝐎𝐕𝐄𝐏𝐑𝐄𝐄𝐓
+	ss=f"""
+𝐓𝐎𝐎𝐋 𝐁𝐘 #𝐒𝐅 
+≿━━━━༺❀༻━━━━≾  
+[👱🏻] Name ==> {full_name}  
+[👻] Username ==> @{username}  
+[💌] Email ==> {email}  
+[🔁] Followers ==> {fows}  
+[🔂] Following ==> {fowg}  
+[🎥] Posts ==> {pp}  
+[📖] Bio ==> {bio}  
+[🔏] Private ==> {isPraise}
+[🔺] ID ==> {Id}  
+[📅] Year ==> {date(Id)}  
+[💯] Meta ==> {meta}  
+[↩️] URL ==> https://www.instagram.com/{username}  
+[🍳] RESET ==> {reset_email}  
 
-╭─✦───────────────────────✦──✦───────────────────────✦─  
-[🫅🏻️] Name ==> {full_name} 
-[⚡] Username ==> @{username}  
-[📧] Email ==> {email}  
-[📈️] Followers ==> {fows}  
-[📉️] Following ==> {fowg}  
-[🖼️️] Posts ==> {pp}  
-[📜] Bio ==> {bio}  
-[🔐️] Private ==> {isPraise}
-[🪪️] ID ==> {Id}  
-[🗓️] Year ==> {date(Id)}  
-[⚜️] Meta ==> {meta}  
-[🔗] URL ==> https://www.instagram.com/{username}  
-[♻️️] RESET ==> {reset_email}  
-─✦───────────────────────✦──✦───────────────────────✦─
- 𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑 •  ⚡ @BEASTEREN ⚡""";inline_keyboard=[[{'text':'DEV','url':'https://t.me/beasteren'},{'text':'MUST JOIN','url':'https://t.me/levixlovepreet'}]];payload={'chat_id':user_id,'text':ss,'reply_markup':json.dumps({'inline_keyboard':inline_keyboard})}
+≿━━━━༺❀༻━━━━≾  
+໐ຟຖēr: @shadowfighter05 / @sf_army
+¢rēคt໐r: @rejerk 
+
+
+""";inline_keyboard=[[{'text':'𝐀𝐃𝐌𝐈𝐍🧑🏻‍💻','url':'https://t.me/shadowfighter05'},{'text':'𝐂𝐇𝐀𝐍𝐍𝐄𝐋 💓🤍','url':'https://t.me/sfanushar'}]];payload={'chat_id':user_id,'text':ss,'reply_markup':json.dumps({'inline_keyboard':inline_keyboard})}
 	try:requests.post(f"https://api.telegram.org/bot{Token}/sendMessage",data=payload)
 	except:pass
-def pppp():os.system('cls'if os.name=='nt'else'clear');terminal_width=os.get_terminal_size().columns;print(f"   {white}𝗨𝗡𝗖: {hits}{white}         {white}𝗕𝗔𝗗: {bad_gm}{white}        {white}𝗕𝗔𝗗 𝗠𝗔𝗜𝗟: {bad_mail}    ")
+def pppp():os.system('cls'if os.name=='nt'else'clear');terminal_width=os.get_terminal_size().columns;print(f"   {c1}𝑯𝑰𝑻𝑺: [{hits}]{white} ☞  {z}𝑩𝑨𝑫: [{bad_gm}]{white} ☞ {white}𝑩𝑨𝑫 𝑴𝑨𝑰𝑳: [{bad_mail}]    ");print("   \033[96m𝐒𝐅 𝐀𝐑𝐌𝐘🔱     \033[0m ")
 
 import requests
 import json
@@ -250,9 +305,9 @@ def safe_int_input(prompt,default):
 	try:value=input(prompt).strip();return int(value)if value else default
 	except:return default
 ranges={1:(1279001,17750000),2:(17750000,279760000),3:(279760000,900990000),4:(900990000,1629010000),5:(1629010000,2500000000),6:(2500000000,3713668786),7:(3713668786,5699785217),8:(5699785217,8507940634),9:(8507940634,21254029834)}
-print('\n𝗦𝗲𝗹𝗲𝗰𝘁 𝗔 𝗬𝗲𝗮𝗿 𝗙𝗼𝗿 𝗨𝘀𝗲𝗿 𝗜𝗱 𝗥𝗮𝗻𝗴𝗲:')
+print('\nSelect a year for user ID range:')
 for k in range(1,10):print(f"{k} - {2010+k}")
-year_choice=safe_int_input('𝗘𝗻𝘁𝗲𝗿 𝗬𝗼𝘂𝗿 𝗬𝗲𝗮𝗿 𝗖𝗵𝗼𝗶𝗰𝗲 (1-9): ',5)
+year_choice=safe_int_input('Enter your year choice (1-9): ',5)
 def generate_user_id():start,end=ranges.get(year_choice,ranges[5]);return str(random.randrange(start,end))
 def gg(min_followers,min_posts,user_id_func):
 	while True:
